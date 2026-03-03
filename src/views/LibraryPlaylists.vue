@@ -121,6 +121,17 @@ onMounted(() => {
       overflowAllowed: true,
     });
   }
+  const spotifyProv = Object.values(api.providers).find(
+    (p) => p.domain === "spotify" && p.available,
+  );
+  if (spotifyProv) {
+    extraMenuItems.value.push({
+      label: "build_spotify_playlist",
+      icon: "mdi-creation",
+      action: () => eventbus.emit("buildSpotifyPlaylist", {}),
+      overflowAllowed: true,
+    });
+  }
   // signal if/when items get added/updated/removed within this library
   const unsub = api.subscribe_multi(
     [

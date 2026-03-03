@@ -1676,6 +1676,32 @@ export class MusicAssistantApi {
     });
   }
 
+  // Spotify Recommendations related functions
+
+  public getSpotifyRecommendationGenres(): Promise<string[]> {
+    return this.sendCommand("music/spotify_recommendation_genres");
+  }
+
+  public getSpotifyRecommendations(
+    seedTrackUris?: string[],
+    seedArtistUris?: string[],
+    seedGenres?: string[],
+    limit?: number,
+    audioFeatures?: Record<string, number>,
+    queueId?: string,
+    queueOption?: QueueOption,
+  ): Promise<Track[]> {
+    return this.sendCommand("music/spotify_recommendations", {
+      seed_track_uris: seedTrackUris,
+      seed_artist_uris: seedArtistUris,
+      seed_genres: seedGenres,
+      limit,
+      audio_features: audioFeatures,
+      queue_id: queueId,
+      queue_option: queueOption,
+    });
+  }
+
   // ProviderConfig related functions
 
   public async getProviderConfigs(

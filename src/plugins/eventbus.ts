@@ -35,6 +35,11 @@ export type LinkGenreDialogEvent = {
   items: MediaItemType[];
 };
 
+export type BuildSpotifyPlaylistEvent = {
+  seedTrackUris?: string[];
+  seedArtistUris?: string[];
+};
+
 export type Events = {
   contextmenu: ContextMenuDialogEvent;
   playlistdialog: PlaylistDialogEvent;
@@ -42,6 +47,7 @@ export type Events = {
   mergeGenreDialog: MergeGenreDialogEvent;
   deleteGenreDialog: DeleteGenreDialogEvent;
   linkGenreDialog: LinkGenreDialogEvent;
+  buildSpotifyPlaylist: BuildSpotifyPlaylistEvent;
   clearSelection: void;
   "homescreen-edit-toggle": void;
   "mobile-sidebar-open": void;
